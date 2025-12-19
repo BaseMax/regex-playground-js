@@ -203,11 +203,23 @@
             display: inline;
         }
 
-        .match:nth-child(odd) {
+        .match[data-match-index] {
+            background-color: #ffd700;
+        }
+
+        .match[data-match-index="0"],
+        .match[data-match-index="2"],
+        .match[data-match-index="4"],
+        .match[data-match-index="6"],
+        .match[data-match-index="8"] {
             background-color: #ffeb3b;
         }
 
-        .match:nth-child(even) {
+        .match[data-match-index="1"],
+        .match[data-match-index="3"],
+        .match[data-match-index="5"],
+        .match[data-match-index="7"],
+        .match[data-match-index="9"] {
             background-color: #ffc107;
         }
 
@@ -485,8 +497,8 @@
                     matches.forEach((m, idx) => {
                         // Add text before match
                         highlightedHtml += escapeHtml(text.substring(lastIndex, m.index));
-                        // Add highlighted match
-                        highlightedHtml += `<span class="match">${escapeHtml(m.text)}</span>`;
+                        // Add highlighted match with index for alternating colors
+                        highlightedHtml += `<span class="match" data-match-index="${idx}">${escapeHtml(m.text)}</span>`;
                         lastIndex = m.index + m.text.length;
                     });
 
@@ -538,7 +550,7 @@
             // Basic pattern explanations
             const patterns = [
                 { regex: /\^/g, desc: '<span class="pattern">^</span> - Matches the start of a line' },
-                { regex: /\$(?![^[]*])/g, desc: '<span class="pattern">$</span> - Matches the end of a line' },
+                { regex: /\$/g, desc: '<span class="pattern">$</span> - Matches the end of a line' },
                 { regex: /\\d/g, desc: '<span class="pattern">\\d</span> - Matches any digit (0-9)' },
                 { regex: /\\D/g, desc: '<span class="pattern">\\D</span> - Matches any non-digit' },
                 { regex: /\\w/g, desc: '<span class="pattern">\\w</span> - Matches any word character (a-z, A-Z, 0-9, _)' },
