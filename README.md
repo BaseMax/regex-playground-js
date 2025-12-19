@@ -2,6 +2,12 @@
 
 🔍 Test and visualize regular expressions in real time with this interactive, client-side web application.
 
+![Regex Playground](preview/1.png)
+
+![Regex Playground](preview/2.png)
+
+![Regex Playground](preview/3.png)
+
 ## Features
 
 - **Live Pattern Testing** - See regex matches update in real-time as you type
